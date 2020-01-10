@@ -19,16 +19,16 @@ class App extends React.Component {
     this.state = {
       boardSize: 10,
       mineCount: 0,
-      board: {},
+      cells: {},
       gameOver: false
     }
   }
 
   buildBoard (isOpened = false, isFlagged = false, isMined = false, neighborMineCount = 0) {
-    let newBoard = {};
+    let newCells = {};
     for (let row = 0; row < this.state.boardSize; row++) {            
         for (let column = 0; column < this.state.boardSize; column++) {
-          newBoard[`${row}${column}`] = {
+          newCells[`${row}${column}`] = {
               id: `${row}${column}`,
               row,
               column,
@@ -40,8 +40,8 @@ class App extends React.Component {
         }
     }
 
-    newBoard = randomlyAssignMines(newBoard, this.state.boardSize, this.state.mineCount);    
-    this.state.board = newBoard;    
+    newCells = randomlyAssignMines(newCells, this.state.boardSize, this.state.mineCount);    
+    this.state.cells = newCells;    
   }
 
   loss() {
@@ -52,7 +52,7 @@ class App extends React.Component {
 
   onClick (event, id) {
     if (!this.state.gameOver) {
-      let cell = this.state.board[id];
+      let cell = this.state.cells[id];
       const clickedCell = event.target.id;
 
       if (!cell.opened) { //Check if cell is opened
@@ -72,12 +72,12 @@ class App extends React.Component {
               clickedCell.style.backgroundImage = 'radial-gradient(#e6e6e6, #c9c7c7)';
               
               //Open all adjacent cells if they are neither flagged nor opened
-              let neighbors = getNeighbors(this.state.board, id);
+              let neighbors = getNeighbors(this.state.cells, id);
               neighbors.map( item => {
 
                 let neighbor = item;
 
-                if (typeof neighbor !== 'undefined' && !this.state.board[neighbor.id].flagged && !this.state.board[neighbor.id].opened ) {
+                if (typeof neighbor !== 'undefined' && !this.state.cells[neighbor.id].flagged && !this.state.cells[neighbor.id].opened ) {
                   this.onClick(neighbor);
                 }
               })
@@ -90,12 +90,11 @@ class App extends React.Component {
   }
 
   render() {
-    this.buildBoard();
-    console.log(this.state.board);
+    this.buildBoard();    
     return (
       <div className="App">
         <Title />
-        <Board boardSize={this.state.boardSize}  />      
+        <Board boardSize={this.state.boardSize} cells={this.state.cells} />
       </div>      
     );
   }  

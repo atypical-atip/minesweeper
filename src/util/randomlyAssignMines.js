@@ -3,12 +3,14 @@ import { getRandInt } from './getRandInt';
 //Randomly assign mines to cells
 let cell;
 
+//Get random coordinates helper function
 const getRandCoord = (boardSize) => {
     let randomRowCoordinate = getRandInt(0, boardSize);
     let randomColumnCoordinate = getRandInt(0, boardSize);
     cell = `${randomRowCoordinate}${randomColumnCoordinate}`;
 }
 
+//Assign mines to cells. All args come from App.jsx
 export const randomlyAssignMines = (board, boardSize, mineCount) => {
     let mineCoordinates = [];
 
