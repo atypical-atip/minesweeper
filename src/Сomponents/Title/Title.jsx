@@ -1,19 +1,19 @@
 import React from 'react';
 
 // Import styles
-import './Title.css';
+import styles from './Title.module.css';
 
 //import images
 import bomb from './img/bomb.png'
 
 export const Title = () => {
     return (
-        <div className='title'>
+        <div className={`${styles.title}`}>
             
             <h1>
-                <img src={bomb} className='titleBomb left' />
+                <img src={bomb} className={`${styles.titleBomb} ${styles.left}`} alt='minesweeper' />
                 Mine<span>sweep</span>er
-                <img src={bomb} className='titleBomb right' />
+                <img src={bomb} className={`${styles.titleBomb} ${styles.right}`} alt='minesweeper' />
             </h1>            
         </div>
     )

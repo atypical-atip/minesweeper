@@ -1,5 +1,5 @@
 import { getNeighbors } from './getNeighbors';
-import { isMined } from './isMined';
+// import { isMined } from './isMined';
 
 // Calculate mines in neighbor cells
 

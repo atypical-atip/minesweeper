@@ -1,21 +1,25 @@
+//get color according to number
 export const getNumberColor = num => {
+    let color;
     switch(num) {
         case 1:
-            return 'blue';
+            color = 'blue';
             break;
         case 2:
-            return 'green';
+            color = 'green';
             break;
         case 3:
-            return 'red';
+            color = 'red';
             break;
         case 4:
-            return 'purple';
+            color = 'purple';
             break;
         case 5:
-            return '#46250c';
+            color = '#46250c';
             break;            
         default:
-            return '#702f6f';
+            color = '#702f6f';
     }
+
+    return color;
 }

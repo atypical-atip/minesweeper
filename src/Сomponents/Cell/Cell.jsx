@@ -1,7 +1,7 @@
 import React from 'react';
 
 //import styles
-import './Cell.css';
+import styles from './Cell.module.css';
 
 export class Cell extends React.Component {
     constructor(props) {
@@ -16,7 +16,7 @@ export class Cell extends React.Component {
     render() {
         return (
             <div
-            className={`cell ${this.props.isOpened ? `opened` : `closed`}`}
+            className={`${styles.cell} ${this.props.isOpened ? `${styles.opened}` : `${styles.closed}`}`}
             id={this.props.id}
             onClick={this.handleClick}></div>
         )

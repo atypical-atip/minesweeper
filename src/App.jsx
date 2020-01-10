@@ -2,6 +2,7 @@
 import { randomlyAssignMines } from './util/randomlyAssignMines';
 import { getNeighbors } from './util/getNeighbors';
 import { calcNeighborMineCount } from './util/calcNeighborMineCount';
+import { getNumberColor } from './util/getNumberColor';
 
 //Import styles
 import './App.css';
@@ -46,9 +47,8 @@ class App extends React.Component {
     newCells = randomlyAssignMines(newCells, this.state.boardSize, this.state.mineCount);
     newCells = calcNeighborMineCount(newCells, this.state.boardSize);
 
-    this.state.cells = newCells;
-    
     this.setState({
+      cells: newCells,
       gameOver: false
     })
   }
@@ -71,30 +71,27 @@ class App extends React.Component {
           
           if (cell.isMined) { //Check if cell is mined
             // this.loss();
-            // clickedCell.style.color = 'red';
+            clickedCell.style.backgroundColor = 'red';
             console.log('Game Over!');
           } else {
             cell.isOpened = true;
-            console.log(cell);
-            if(cell.neighborMineCount > 0) {
-              console.log('>0')
-              // let color = getNumberColor(cell.neighborMineCount); //CHECK!!!
-              // clickedCell.style.color = color;
+
+            if(cell.neighborMineCount > 0) {              
+              let color = getNumberColor(cell.neighborMineCount);
+              clickedCell.style.color = color;
             }
-            // else {
-            //   clickedCell.style.backgroundImage = 'radial-gradient(#e6e6e6, #c9c7c7)';
+            else {              
+              clickedCell.style.backgroundColor = '#686468';
               
-            //   //Open all adjacent cells if they are neither flagged nor opened
-            //   let neighbors = getNeighbors(this.state.cells, cell.id);
-            //   neighbors.map( item => {
-
-            //     let neighbor = item;
-
-            //     if (typeof neighbor !== 'undefined' && !this.state.cells[neighbor.id].isFlagged && !this.state.cells[neighbor.id].isOpened ) {
-            //       this.handleClick(neighbor);
-            //     }
-            //   })
-            // }
+              //Open all adjacent cells if they are neither flagged nor opened
+              let neighbors = getNeighbors(this.state.cells, cell.id);
+              
+              neighbors.map( item => {                
+                if (typeof item !== 'undefined' && !this.state.cells[item.id].isFlagged && !this.state.cells[item.id].isOpened ) {
+                  this.handleClick(item.id);
+                }
+              })
+            }
           }
         }
       }
