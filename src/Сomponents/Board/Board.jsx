@@ -1,13 +1,15 @@
+//import styles
+import './Board.css';
+
 import React from 'react';
 import { Cell } from '../Cell/Cell';
-import { randomlyAssignMines } from '../../util/randomlyAssignMines';
 
 export class Board extends React.Component {
 
     render() {        
         return (
-            <div>
-                
+            <div className={`board boardSize${this.props.boardSize}`}>
+                {/* <Cell /> */}
             </div>
         );
     }

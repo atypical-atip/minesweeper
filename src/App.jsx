@@ -1,8 +1,15 @@
-import React from 'react';
-import { Board }  from '../src/Сomponents/Board/Board';
+//Import logic functions
 import { randomlyAssignMines } from './util/randomlyAssignMines';
-import './App.css';
 import { getNeighbors } from './util/getNeighbors';
+
+//Import styles
+import './App.css';
+
+//Import components
+import React from 'react';
+import { Board }  from './Сomponents/Board/Board';
+import { Title } from './Сomponents/Title/Title';
+
 
 class App extends React.Component {
 
@@ -37,14 +44,23 @@ class App extends React.Component {
     this.state.board = newBoard;    
   }
 
+  loss() {
+    this.setState({
+      gameOver: true
+    })
+  }
+
   onClick (event, id) {
     if (!this.state.gameOver) {
       let cell = this.state.board[id];
       const clickedCell = event.target.id;
+
       if (!cell.opened) { //Check if cell is opened
+
         if (cell.flagged) { //Check if cell is flagged
+
           if (cell.mined) { //Check if cell is mined
-            // loss(); //CHECK!!!
+            this.loss();
             clickedCell.style.color = 'red';
           } else {
             cell.opened = true;
@@ -78,8 +94,9 @@ class App extends React.Component {
     console.log(this.state.board);
     return (
       <div className="App">
-        <Board boardSize={this.state.boardSize}  />
-      </div>
+        <Title />
+        <Board boardSize={this.state.boardSize}  />      
+      </div>      
     );
   }  
 }

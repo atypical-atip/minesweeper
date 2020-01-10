@@ -1,0 +1,45 @@
+/* Title */
+.title {
+    width: 100%;
+    text-align: center;
+    color: #fff;    
+    padding-top: 20px;  
+}
+
+.title h1 {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;    
+}
+
+.title span {
+    color: chocolate;
+}
+
+/* Bombs in title */
+.titleBomb {
+    width: 75px;
+    margin: 0 20px;    
+}
+
+.left {
+    animation: rotateLeft 4s linear infinite;
+}
+
+.right {
+    animation: rotateRight 4s linear infinite;
+}
+
+/* Bomb spin */
+@keyframes rotateLeft {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes rotateRight {
+    100% {
+        transform: rotate(360deg);
+    }
+}

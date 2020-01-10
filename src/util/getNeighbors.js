@@ -11,8 +11,8 @@ const checkAndPushCell = (board, id, targetArray) => {
 
 //argument board - object from state with 'cells'
 export const getNeighbors = (board, id) => {
-        let row = parseInt(board[id][row]),
-            col = parseInt(board[id][column]),
+        let row = parseInt(board.id.row),
+            col = parseInt(board.id.column),
             neighbors = [];
         console.log(board);
         checkAndPushCell(board, `${row - 1}${col - 1}`, neighbors);

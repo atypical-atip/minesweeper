@@ -1,0 +1,9 @@
+.board {
+    margin: 20px auto;
+    border: 25px solid #000;
+}
+
+.boardSize10 {
+    width: 520px;
+    height: 520px;    
+}
