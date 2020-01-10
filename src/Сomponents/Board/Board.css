@@ -1,9 +1,19 @@
 .board {
     margin: 20px auto;
-    border: 25px solid #000;
+    border: 10px solid #a5a5a5;
 }
 
 .boardSize10 {
+    width: 260px;
+    height: 260px;    
+}
+
+.boardSize20 {
     width: 520px;
-    height: 520px;    
+    height: 520px;     
+}
+
+.boardSize30 {
+    width: 780px;
+    height: 780px;     
 }
