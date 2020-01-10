@@ -13,18 +13,18 @@ const getRandCoord = (boardSize) => {
 //Assign mines to cells. All args come from App.jsx
 export const randomlyAssignMines = (board, boardSize, mineCount) => {
     let mineCoordinates = [];
-
+    
     for (let i = 0; i < mineCount; i++) {
         getRandCoord(boardSize);
-
+        
         while( mineCoordinates.includes(cell) ) {
             getRandCoord(boardSize);
         }
 
         mineCoordinates.push(cell);
-        board[cell].isMined = true;
+        board[cell].isMined = true;        
     }
-
+    
     return board;
 }
 

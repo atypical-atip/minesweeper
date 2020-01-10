@@ -8,7 +8,7 @@ export const Board = props => {
     return (
         <div className={`board boardSize${props.boardSize}`}>
             {
-                Object.keys(props.cells).map(cell => <Cell id={props.cells[cell].id} key={props.cells[cell].id} />)
+                Object.keys(props.cells).map(cell => <Cell id={props.cells[cell].id} key={props.cells[cell].id} handleClick={props.handleClick} />)
             }                
         </div>
     );
